@@ -18,7 +18,7 @@ function Main(){
     return(
         <ContainerStyled>
             <div className="mb-2">
-
+                
             </div>
         </ContainerStyled>
     )
