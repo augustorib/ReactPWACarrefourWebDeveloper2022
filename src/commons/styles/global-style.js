@@ -40,10 +40,6 @@ const globalStyle = createGlobalStyle`
     .cursor{
         cursor: pointer;
     }
-
-    p{
-        color: white;
-    }
 `
 
 export default globalStyle;
