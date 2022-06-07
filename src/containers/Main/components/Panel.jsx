@@ -18,25 +18,51 @@ function Panel({updateAt, onChange, data, country, getCovidData}){
             </ItemStyled>
         </MenuItem>
         );
+        
+    const textCovid19 = `País: ${country}`;
+        
+    const shareInfo = () => {
+        navigator.share({
+            tittle: `Dados do Covid19 - ${country}`,
+            text:   textCovid19,
+            url: 'https://covid19'
+        })
+    };
+
+    const copyInfo = () => {
+        navigator.clipboard.writeText(textCovid19);
+    }
     
-    
+    const renderShareButton = (
+        <div>
+            <Button variant="contained" color="primary" onClick={shareInfo}>Compartilhar</Button>
+        </div>
+    );
+
+    const renderCopyButton = (
+        <div>
+            <Button variant="contained" color="primary" onClick={copyInfo}>Copiar</Button>
+        </div>
+    );
+
     return(
         <Card>
             <CardPanelContentStyled>
                 <div>
                     <Typography variant="h5" component="span" color="primary">COVID19</Typography>
-                    <Typography variant="h6" component="span" color="primary">Painel Coronavírus</Typography>
-                    <Typography variant="body2" component="span" color="primary">Atualizado em: {updateAt}</Typography>
+                    <Typography variant="h6" component="p" color="primary">Painel Coronavírus</Typography>
+                    <Typography variant="body2" component="p" color="primary">Atualizado em: {updateAt}</Typography>
                     <div className="pt-2">
                         <Select onChange={onChange} value={country}>
                             {COUNTRIES.map(renderCountries)}
                         </Select>
                     </div>
                 </div>
+                {navigatorHasShare ? renderShareButton : renderCopyButton}
             </CardPanelContentStyled>
         </Card>
     )
 
-}
+};
 
 export default memo(Panel);

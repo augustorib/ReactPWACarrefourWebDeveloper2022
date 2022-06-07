@@ -7,7 +7,7 @@ import {ContainerStyled} from './style';
 function Main(){
     const [data, setData] = useState({})
     const [country, setCountry] = useState('brazil');
-    const updateAt = new Date().toLocaleDateString();
+    const updateAt = new Date().toLocaleString();
 
     const getCovidData = useCallback((country) =>{
         Api.getCountry(country)
@@ -28,7 +28,7 @@ function Main(){
             <div className="mb-2">
                 <Panel
                     data={data}
-                    UpdateAt={updateAt}
+                    updateAt={updateAt}
                     onChange={handleChange}
                     country={country}
                     getCovidData={getCovidData}

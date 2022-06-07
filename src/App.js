@@ -10,10 +10,6 @@ function App() {
       <CssBaseline/>
         <GlobalStyle/>
         <Main/>
-          <div>
-            <h1>Hello World!</h1>
-            <p>Olá mundo!</p>
-          </div>
     </StylesProvider>
   );
 }
